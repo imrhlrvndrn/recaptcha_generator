@@ -1,13 +1,193 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+    --primary_color: hsl(16, 100%, 64%);
+    --faded_primary_color: hsl(16, 100%, 95%);
+    --background_dark: whitesmoke;
+    --background_light: white;
+    --text: black;
+    --text_light: whitesmoke;
+    --text_dark: #222;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 1rem;
+    font-weight: 400;
+    font-family: 'Manrope', sans-serif;
+    color: var(--text);
+}
+
+.dark {
+    --background_dark: #111;
+    --background_light: #222;
+    --text: whitesmoke;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--background_dark);
+}
+
+label {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+input,
+button {
+    outline: none;
+    border: none;
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+input::placeholder {
+    opacity: 0.6;
+    text-transform: capitalize;
+}
+
+input {
+    margin-bottom: 1rem;
+    border: 2px solid transparent;
+    transition: 0.4s all ease-in-out;
+    background-color: var(--background_dark);
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.form_card {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    min-width: 500px;
+    max-width: 500px;
+    border-radius: 20px;
+    background-color: var(--background_light);
+}
+
+.password_group {
+    padding: 0.4rem 1rem;
+    display: flex;
+    margin-bottom: 1rem;
+    align-items: center;
+    border-radius: 10px;
+    justify-content: space-between;
+    background-color: var(--background_dark);
+}
+
+.password_group > input {
+    flex: 0.95;
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+}
+
+.password_group > button {
+    flex: 0.05;
+    cursor: pointer;
+    padding: 0.8rem 1rem;
+    background-color: transparent;
+}
+
+.password_group > button > svg {
+    fill: var(--primary_color);
+}
+
+.recaptcha_container {
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    /* height: 80px; */
+}
+
+.recaptcha {
+    flex: 0.9;
+    padding: 1rem;
+    user-select: none;
+    color: var(--text);
+    border-radius: 10px;
+    letter-spacing: 2px;
+    font-family: monospace;
+    background-color: var(--background_dark);
+}
+
+.reload_recaptcha {
+    flex: 0.1;
+    cursor: pointer;
+    margin-left: 1rem;
+    background-color: var(--primary_color);
+    color: var(--text_light);
+    transition: 0.4s all ease-in-out;
+}
+
+.reload_recaptcha:focus {
+    background-color: hsl(16, 100%, 60%);
+    color: var(--text_light);
+}
+
+.recaptcha_note {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    border: 1px solid var(--primary_color);
+    background-color: var(--faded_primary_color);
+    color: var(--primary_color);
+}
+
+.recaptcha_note > svg {
+    fill: var(--text_dark);
+}
+
+.recaptcha_note > p {
+    font-style: italic;
+    margin-left: 1rem;
+    color: var(--text_dark);
+}
+
+.primary_button {
+    cursor: pointer;
+    color: var(--text_light);
+    font-weight: 600;
+    transition: 0.4s all ease-in-out;
+    background-color: var(--primary_color);
+}
+
+.primary_button:hover {
+    background-color: hsl(16, 100%, 60%);
+}
+
+.primary_button:disabled {
+    opacity: 0.6;
+    color: var(--text);
+    cursor: not-allowed;
+    background-color: var(--background_dark);
+}
+
+.secondary_button {
+    background-color: var(--background_light);
+}
+
+.step_action_buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.step_action_buttons > :first-child {
+    flex: 0.49;
+}
+
+.step_action_buttons > :last-child {
+    flex: 0.49;
 }
