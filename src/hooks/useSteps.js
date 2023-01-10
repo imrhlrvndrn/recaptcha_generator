@@ -4,7 +4,7 @@ export const useSteps = (steps = [], initialStep = 1) => {
     const processedSteps = steps?.reduce(
         (acc, curValue, curIndex) => [
             ...acc,
-            { step: curIndex + 1, component: curValue, Props: null },
+            { ...curValue, step: curIndex + 1, component: curValue?.component, Props: null },
         ],
         []
     );
@@ -43,6 +43,7 @@ export const useSteps = (steps = [], initialStep = 1) => {
     return [
         currentStep,
         {
+            title: totalSteps[currentStep - 1]?.title,
             ActiveStep: totalSteps[currentStep - 1]?.component,
             Props: totalSteps[currentStep - 1]?.Props,
         },

@@ -9,11 +9,15 @@ import './index.css';
 // hooks
 import { useSteps } from './hooks';
 
+// icons
+import { ReactComponent as DarkIcon } from './icons/dark.svg';
+import { ReactComponent as LightIcon } from './icons/light.svg';
+
 // components
 import { RecaptchaStep, UserDetailsStep } from './components';
 
 function App() {
-    const [theme, setTheme] = useState('');
+    const [theme, setTheme] = useState('dark');
     const [signup_data, setSignupData] = useState({
         full_name: '',
         email: '',
@@ -21,7 +25,10 @@ function App() {
         recaptcha: generate_recaptcha(9),
         input_recaptcha: '',
     });
-    const [currentStep, { ActiveStep }, navigation] = useSteps([UserDetailsStep, RecaptchaStep], 1);
+    const [currentStep, { title, ActiveStep }, navigation] = useSteps([
+        { title: '📝 User Details', component: UserDetailsStep },
+        { title: '🧐 Are you a BOT?', component: RecaptchaStep },
+    ]);
 
     const update_signup_data = (event) =>
         setSignupData((prevState) => ({
@@ -38,6 +45,15 @@ function App() {
 
     return (
         <div>
+            <div className='card_heading'>
+                <h1>{title}</h1>
+                <button
+                    className='theme_button'
+                    onClick={() => setTheme(theme === 'dark' ? '' : 'dark')}
+                >
+                    {theme === 'dark' ? <LightIcon /> : <DarkIcon />}
+                </button>
+            </div>
             <ActiveStep
                 navigation={navigation}
                 state={signup_data}

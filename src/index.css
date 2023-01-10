@@ -1,6 +1,6 @@
 :root {
     --primary_color: hsl(16, 100%, 64%);
-    --faded_primary_color: hsl(16, 100%, 95%);
+    --faded_primary_color: rgba(255, 117, 71, 0.1);
     --background_dark: whitesmoke;
     --background_light: white;
     --text: black;
@@ -19,9 +19,10 @@
 }
 
 .dark {
-    --background_dark: #111;
-    --background_light: #222;
-    --text: whitesmoke;
+    --text: hsl(0, 0%, 93.3%);
+    --background_dark: hsl(0, 0%, 7%);
+    --background_light: hsl(0, 0%, 12%);
+    --faded_primary_color: rgba(255, 117, 71, 0.1);
 }
 
 body {
@@ -45,6 +46,10 @@ button {
     border-radius: 10px;
 }
 
+button {
+    cursor: pointer;
+}
+
 input::placeholder {
     opacity: 0.6;
     text-transform: capitalize;
@@ -53,14 +58,28 @@ input::placeholder {
 input {
     margin-bottom: 1rem;
     border: 2px solid transparent;
-    transition: 0.4s all ease-in-out;
     background-color: var(--background_dark);
 }
 
 h1 {
     font-size: 2rem;
     font-weight: 600;
+}
+
+.card_heading {
+    display: flex;
     margin-bottom: 1rem;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card_heading > button {
+    padding: 1rem 1.2rem;
+    background-color: var(--background_light);
+}
+
+.card_heading > button > svg {
+    fill: var(--text);
 }
 
 .form_card {
@@ -102,15 +121,19 @@ h1 {
 }
 
 .recaptcha_container {
-    margin-bottom: 1rem;
-    display: flex;
-    justify-content: space-between;
     width: 100%;
+    display: flex;
+    margin-bottom: 1rem;
+    align-items: center;
+    justify-content: space-between;
     /* height: 80px; */
 }
 
 .recaptcha {
     flex: 0.9;
+    min-height: 64px;
+    display: grid;
+    place-items: center;
     padding: 1rem;
     user-select: none;
     color: var(--text);
@@ -124,14 +147,17 @@ h1 {
     flex: 0.1;
     cursor: pointer;
     margin-left: 1rem;
-    background-color: var(--primary_color);
-    color: var(--text_light);
     transition: 0.4s all ease-in-out;
+    background-color: var(--primary_color);
 }
 
 .reload_recaptcha:focus {
     background-color: hsl(16, 100%, 60%);
     color: var(--text_light);
+}
+
+.reload_recaptcha > svg {
+    fill: var(--text_light);
 }
 
 .recaptcha_note {
@@ -146,13 +172,13 @@ h1 {
 }
 
 .recaptcha_note > svg {
-    fill: var(--text_dark);
+    fill: var(--text);
 }
 
 .recaptcha_note > p {
     font-style: italic;
     margin-left: 1rem;
-    color: var(--text_dark);
+    color: var(--text);
 }
 
 .primary_button {
