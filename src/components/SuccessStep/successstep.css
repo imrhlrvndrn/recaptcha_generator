@@ -1,0 +1,11 @@
+.success > * {
+    text-align: center;
+}
+
+.success > p:first-of-type {
+    font-size: 8rem;
+}
+
+.success > button {
+    margin-top: 1rem;
+}

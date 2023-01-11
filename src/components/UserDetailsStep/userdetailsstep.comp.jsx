@@ -2,14 +2,15 @@
 import { ReactComponent as HiddenIcon } from '../../icons/hidden.svg';
 import { ReactComponent as UnhiddenIcon } from '../../icons/unhidden.svg';
 
-// hooks
-import { PasswordStrengthChecker } from '../PasswordStrengthChecker/passwordstrengthchecker.comp';
+// components
+import { PasswordStrengthChecker } from '../';
 
 export const UserDetailsStep = ({ navigation, state, update_input_state, setSignupData }) => {
     return (
-        <form className='form_card'>
+        <form className='card' onSubmit={() => navigation?.nextStep()}>
             <label for='full_name'>Full Name</label>
             <input
+                required
                 autoFocus
                 type='text'
                 name='full_name'
@@ -19,6 +20,7 @@ export const UserDetailsStep = ({ navigation, state, update_input_state, setSign
             />
             <label for='email'>Email</label>
             <input
+                required
                 autocomplete='off'
                 type='email'
                 name='email'
@@ -29,6 +31,7 @@ export const UserDetailsStep = ({ navigation, state, update_input_state, setSign
             <label for='password'>Password</label>
             <div className='password_group'>
                 <input
+                    required
                     type={state?.password?.is_hidden ? 'password' : 'text'}
                     name='password'
                     value={state?.password?.content}
@@ -57,7 +60,6 @@ export const UserDetailsStep = ({ navigation, state, update_input_state, setSign
                     className='primary_button'
                     style={{ flex: '1' }}
                     type='submit'
-                    onClick={() => navigation?.nextStep()}
                 >
                     Next step
                 </button>

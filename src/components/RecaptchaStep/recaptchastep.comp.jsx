@@ -1,10 +1,11 @@
+import { useEffect } from 'react';
+
 // utilities
 import { generate_recaptcha, is_valid_recaptcha } from '../../utils';
 
 // icons
 import { ReactComponent as ReloadIcon } from '../../icons/reload.svg';
 import { ReactComponent as HintIcon } from '../../icons/hint.svg';
-import { useEffect } from 'react';
 
 export const RecaptchaStep = ({ navigation, state, update_input_state, setSignupData }) => {
     const accounts = JSON.parse(localStorage.getItem('accounts')) || [];
@@ -28,6 +29,8 @@ export const RecaptchaStep = ({ navigation, state, update_input_state, setSignup
                     },
                 ])
             );
+
+            navigation?.nextStep();
         }
     };
 
@@ -36,7 +39,7 @@ export const RecaptchaStep = ({ navigation, state, update_input_state, setSignup
     }, []);
 
     return (
-        <form className='form_card' onSubmit={create_account}>
+        <form className='card' onSubmit={create_account}>
             <div class='recaptcha_container'>
                 <p class='recaptcha'>{state?.recaptcha}</p>
                 <button

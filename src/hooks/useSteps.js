@@ -21,7 +21,7 @@ export const useSteps = (steps = [], initialStep = 1) => {
         console.log('nextStep triggered');
         let nextStep = currentStep + 1;
 
-        if (nextStep > totalSteps?.length) return;
+        if (nextStep > totalSteps?.length) return setCurrentStep(initialStep);
         else {
             if (props)
                 setTotalSteps((prevState) => prevState?.map((step) => ({ ...step, Props: props })));

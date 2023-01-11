@@ -14,7 +14,7 @@ import { ReactComponent as DarkIcon } from './icons/dark.svg';
 import { ReactComponent as LightIcon } from './icons/light.svg';
 
 // components
-import { RecaptchaStep, UserDetailsStep } from './components';
+import { RecaptchaStep, SuccessStep, UserDetailsStep } from './components';
 
 function App() {
     const [theme, setTheme] = useState('dark');
@@ -26,7 +26,8 @@ function App() {
         input_recaptcha: '',
     });
     const [currentStep, { title, ActiveStep }, navigation] = useSteps([
-        { title: '📝 User Details', component: UserDetailsStep },
+        { title: '🎉 Account created!', component: SuccessStep },
+        { title: '📝 User details', component: UserDetailsStep },
         { title: '🧐 Are you a BOT?', component: RecaptchaStep },
     ]);
 

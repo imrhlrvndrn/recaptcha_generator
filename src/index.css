@@ -82,7 +82,7 @@ h1 {
     fill: var(--text);
 }
 
-.form_card {
+.card {
     padding: 2rem;
     display: flex;
     flex-direction: column;
